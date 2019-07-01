@@ -17,7 +17,7 @@ var output_debounce = document.getElementById('output_debounce');
 fromEvent(input_debounce, 'keydown').pipe(
     tap(() => {
         output_debounce.innerText = "";  
-        input_debounce.style = 'background-color: lightgray';
+        input_debounce.setAttribute("style", 'background-color: lightgray');
     }),
     debounceTime(1000),
     switchMap(async () => await CheckPassword(input_debounce.value))
@@ -35,9 +35,9 @@ async function CheckPassword(password) {
     await new Promise(resolve => setTimeout(resolve, time));
 
     if(result)
-        input_debounce.style = 'background-color: #dfd';
+        input_debounce.setAttribute("style", 'background-color: #dfd');
     else
-        input_debounce.style = 'background-color: #fdd';
+        input_debounce.setAttribute("style", 'background-color: #fdd');
 
     console.log(result);
 
